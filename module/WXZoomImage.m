@@ -14,11 +14,15 @@ WX_PlUGIN_EXPORT_MODULE(zoomImage, WXZoomImage)
 @synthesize weexInstance;
 WX_EXPORT_METHOD(@selector(show:))
 WX_EXPORT_METHOD(@selector(dismiss))
--(void)show:(NSMutableArray*)array
+-(void)show:(NSMutableDictionary*)p
 {
+    NSMutableArray*array=p[@"list"];
+    int index=0;
+    if([p objectForKey:@"index"])
+      index=p[@"index"];
     LPPhotoViewer *pvc = [[LPPhotoViewer alloc] init];
     pvc.imgArr = array;
-    pvc.currentIndex = 0;
+    pvc.currentIndex = index;
     pvc.indicatorType = IndicatorTypeNumLabel;
     [self.weexInstance.viewController.TopViewController presentViewController:pvc animated:YES completion:nil];
     
