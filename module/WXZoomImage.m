@@ -19,7 +19,7 @@ WX_EXPORT_METHOD(@selector(dismiss))
     NSMutableArray*array=p[@"list"];
     int index=0;
     if([p objectForKey:@"index"])
-      index=p[@"index"];
+        index=[@"" add:p[@"index"]].intValue;
     LPPhotoViewer *pvc = [[LPPhotoViewer alloc] init];
     pvc.imgArr = array;
     pvc.currentIndex = index;
